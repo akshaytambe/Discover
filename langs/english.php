@@ -22,7 +22,7 @@ function lang($txt){
     'w_post_li2' => 'right',
     'w_post_align' => 'left',
     'w_post_dir' => 'ltr',
-    'post_textbox_placeholder' => 'Share , post your ideas with our community',
+    'post_textbox_placeholder' => 'Share, post your stories with our community',
     'post_textbox_align' => 'left',
     'post_now' => 'Post now',
     'w_title_inputText' => 'Write a title to your post (optional)',

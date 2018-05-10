@@ -27,6 +27,7 @@ switch ($get_post_privacy) {
 }
 $p_title = $get_post_title;
 $p_location = $get_post_location;
+$location_link = "https://www.google.com/maps/place/".urlencode($p_location);
 if (!empty($get_post_shared)) {
     $p_title = lang('shared_a_Post');
     $p_location = lang('shared_a_Location');
@@ -128,7 +129,7 @@ $body = nl2br("$body");
     }
     echo "</div><div id='postLocation_$get_post_id'>";
     if (!empty($p_location)) {
-        echo "<p class='postLocation' style='border-".lang('float').": 2px solid rgba(80, 94, 113, 0.19); text-align: ".lang('textAlign').";'>@ $p_location</p>";
+        echo "<p class='postLocation' style='border-".lang('float').": 2px solid rgba(80, 94, 113, 0.19); text-align: ".lang('textAlign').";'><a href=$location_link>@ $p_location</a></p>";
     }
     switch ($get_post_privacy) {
         case '0':
@@ -180,6 +181,7 @@ while ($sharedRow = $fetch_shared->fetch(PDO::FETCH_ASSOC)) {
     $shP_content = $sharedRow['post_content'];
     $shP_time = $sharedRow['post_time'];
     $shP_timeago = time_ago($shP_time);
+    $shP_location_link = "https://www.google.com/maps/place/".urlencode($shP_location);
 
     $who_shareInfo = $conn->prepare("SELECT * FROM Users WHERE id=:shP_aid ");
     $who_shareInfo->bindParam(':shP_aid',$shP_aid,PDO::PARAM_INT);
@@ -221,7 +223,7 @@ if (!empty($shP_title)) {
 }
 echo "</div><div id='postLocation_$get_post_id'>";
 if (!empty($shP_location)) {
-    echo "<p class='postLocation' style='border-".lang('float').": 2px solid rgba(80, 94, 113, 0.19); text-align: ".lang('textAlign').";'>$shP_location</p>";
+    echo "<p class='postLocation' style='border-".lang('float').": 2px solid rgba(80, 94, 113, 0.19); text-align: ".lang('textAlign').";'><a href=$shP_location_link>@ $shP_location</a></p>";
 }
 echo "</div><div class=\"post_content\" style=\"text-align:left;\">
 <p dir=\"auto\" id=\"postContent_$shP_id\" style='text-align: ".lang('textAlign').";'>$sh_body";

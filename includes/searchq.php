@@ -59,7 +59,7 @@ if (strlen($q) > 20) {
 }
 // ============================ count public posts that have hashtag requested =====================================
 $ht_publicPosts_sql = "SELECT post_content FROM Post WHERE post_content LIKE ? AND p_privacy != ? AND p_privacy != ?";
-$ht_publicPosts_params = array("%$q%", "1", "2");
+$ht_publicPosts_params = array("%#$q%", "1", "2");
 $ht_publicPosts = $conn->prepare($ht_publicPosts_sql);
 $ht_publicPosts->execute($ht_publicPosts_params);
 $ht_publicPostsCount = $ht_publicPosts->rowCount();
