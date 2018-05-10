@@ -211,6 +211,7 @@ CREATE TABLE `Post` (
   `post_time` int(11) NOT NULL,
   `post_content` mediumtext CHARACTER SET utf8mb4 NOT NULL,
   `p_title` varchar(1000) CHARACTER SET utf8mb4 NOT NULL,
+  `p_location` varchar(1000) CHARACTER SET utf8mb4 NOT NULL,
   `p_likes` int(100) NOT NULL DEFAULT '0',
   `p_privacy` int(11) NOT NULL DEFAULT '0',
   `shared` varchar(1000) CHARACTER SET utf8mb4 NOT NULL
